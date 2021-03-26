@@ -1,55 +1,65 @@
 """
+Python 3 OnePager for Python 3.9.x+
+By Shay Ellison (the.digital.shay@gmail.com)
+
+You can import this file into Python or run it with python.
+python onepager.py
+
 This is a multiline comment / docstring
 """
-# This is a comment
+# This is a single line comment
 
 # Imports
-import math                             # Import the math module
-from dataclasses import dataclass       # Import dataclass from the typing module
-from typing import (                    # Import multiple items from the typing module
+import math                                     # Import the math module
+from dataclasses import dataclass               # Import dataclass from the typing module
+from typing import (                            # Import multiple items from the typing module
     Any, List, Set, Dict
 )
-# from . import module_or_package       # Relative import, within a package, same level
-# from .. import module_or_package      # Relative import, within a container package, previous level
+# from . import module_or_package               # Relative import, within a same package
+# from .. import module_or_package              # Relative import, within a same container package
+
 
 # Hello, world
-print("Hello, world!")
+print("Hello, world!")                          # Prints Hello, world!
+
 
 # Integers (int)
 pos_int = 128
 neg_int = -128
-an_int: int = 1                         # Typehint, optional
+an_int: int = 1                                 # Typehint, optional
 
-int_add = 1 + 2                         # = 3
-int_sub = 2 - 1                         # = 1
-int_mul = 3 * 4                         # = 12
-int_exp = 2**3                          # = 8
-int_div = 4 // 2                        # = 2
-int_div = 5 // 2                        # = 2
-int_mod = 5 % 2                         # = 5 - 4 = 1
+int_add = 1 + 2                                 # = 3
+int_sub = 2 - 1                                 # = 1
+int_mul = 3 * 4                                 # = 12
+int_exp = 2**3                                  # = 8
+int_div = 4 // 2                                # = 2, there's a / too but for float (see below)
+int_div = 5 // 2                                # = 2
+int_mod = 5 % 2                                 # = 5 - 4 = 1
+type(pos_int) == int                            # = True
 
 
 # Floats (float)
 pos_float = 4.5
 neg_float = -4.5
-a_float: float = 4.5                    # Typehint, optional
+a_float: float = 4.5                            # Typehint, optional
 
-float_add = 1.0 + 2                     # = 3.0
-float_sub = 2.0 - 1                     # = 1.0
-float_mul = 3.0 * 4                     # = 12.0
-float_exp = 2**-1                       # = 0.5
-float_div = 4 / 2                       # = 2.0
-float_div = 5 / 2                       # = 2.5
-float_div = 7.0 / 2.0                   # = 3.5
-float_mod = 4.5 % 2                     # = 4.5 - 4 = 0.5
+float_add = 1.0 + 2                             # = 3.0
+float_sub = 2.0 - 1                             # = 1.0
+float_mul = 3.0 * 4                             # = 12.0
+float_exp = 2**-1                               # = 0.5
+float_div = 4 / 2                               # = 2.0
+float_div = 5 / 2                               # = 2.5
+float_div = 7.0 / 2.0                           # = 3.5
+float_mod = 4.5 % 2                             # = 4.5 - 4 = 0.5
+type(pos_float) == float                        # = True
 
 
 # Strings (str)
 standard_string = "string"
 standard_string = 'string'
-standard_char = "c"                     # No char type, only string of length 1
+standard_char = "c"                             # No char type, only string of length 1
 standard_char = 'c'
-a_string: str = "string"                # Typehint, optional
+a_string: str = "string"                        # Typehint, optional
 a_string: str = 'string'
 
 concat_string = "string" + "c"                  # "stringc"
@@ -60,17 +70,22 @@ format_string2 = "format %s" % ss_char          # "format s"
 format_string2 = "format %d" % pos_int          # "format 128"
 format_string3 = "format {}".format(ss_char)    # "format s"
 format_string3 = "format {}".format(pos_int)    # "format 128"
+standard_string.encode('utf-8')                 # b'string', encoded to bytes with utf-8 codec
+type(standard_string) == str                    # = True
 
 
 # Bytes (bytes)
 standard_bytes = b"bytestring"
 standard_bytes = b'bytestring'
 
+standard_bytes.decode('utf-8')                  # = "bytestring", decoded to string with utf-8 codec
+type(standard_bytes) == bytes                   # = True
+
 
 # Booleans (bool)
 standard_bool = True
 standard_bool = False
-a_bool: bool = True
+a_bool: bool = True                             # Typehint, optional
 a_bool: bool = False
 
 True or False                                   # = True
@@ -81,23 +96,42 @@ True and True                                   # = True
 1 > 2                                           # = False
 standard_bool is None                           # = False, comparison by reference
 standard_bool is not None                       # = True
+type(standard_bool) == bool                     # = True
 
 
-# Lists (list) ==
+# Lists (list)
 empty_list = []
 list_ints = [1, 2, 3]
 list_mixed = [1, "2", 3]
-new_list = list()                   # Alternative initialization
+new_list = list()                               # Alternative initialization
 a_list: List[Any] = []
-int_list: List[int] = [1, 2, 3]     # Typehint, optional
+int_list: List[int] = [1, 2, 3]                 # Typehint, optional
 str_list: List[str] = [1, 2, 3]
 
-empty_list.append(1)                # [1]
-1 in empty_list                     # = True
-2 not in empty_list                 # = True
-empty_list.remove(1)                # []
-empty_list + [1, 2]                 # [1, 2]
-sorted([2, 5, 1, 4])                # [1, 2, 4, 5]
+empty_list.append(1)                            # [1]
+empty_list[0]                                   # = 1
+1 in empty_list                                 # = True
+2 not in empty_list                             # = True
+empty_list[0] = 2                               # [2], replaced value at index 0
+2 in empty_list                                 # = True
+empty_list.remove(2)                            # []
+empty_list + [1, 2]                             # = [1, 2]
+sorted([2, 5, 1, 4])                            # = [1, 2, 4, 5]
+type(empty_list) == list                        # = True
+
+
+# Tuple (tuple)
+empty_tuple = ()
+one_tuple = (9,)
+two_typle = (1,2)
+
+one_tuple[0]                                    # = 9, index into tuple like a list
+9 in one_tuple
+try:
+    one_tuple[0] = 1                            # This is not allowed
+except TypeError:
+    print("Tuples are immutable")
+type(one_tuple) == tuple                        # = True
 
 
 # Dicts (dict)
@@ -110,27 +144,29 @@ mixed_dict = {
     "key1": 1,
     1: "key1",
 }
-new_dict = dict()                   # Alternative initialization
-a_dict: Dict[Any, Any] = {}         # Typehint, optional
+new_dict = dict()                               # Alternative initialization
+a_dict: Dict[Any, Any] = {}                     # Typehint, optional
 str_int_dict: Dict[str, int] = {}
 
 simple_dict["key3"]= 3
-"key3" in simple_dict               # = True
-simple_dict["key3"]                 # = 3
+"key3" in simple_dict                           # = True
+simple_dict["key3"]                             # = 3
+type(simple_dict) == dict                       # = True
 
 
 # Sets (set)
-empty_set = set()                   # NOTE: Just {} is a dict
+empty_set = set()                               # NOTE: Just {} is a dict
 simple_set = { 1, 2, 3, 4 }
 mixed_set = { 1, '2', 3, '4' }
 a_set: Set[Any] = set()
 int_set: Set[int] = { 1, 2, 3, 4 }
 
-simple_set.add(5)                   # { 1, 2, 3, 4, 5 }
-5 in empty_set                      # = True
-simple_set.remove(5)                # { 1, 2, 3, 4 }
-simple_set.union({ 5 })             # { 1, 2, 3, 4, 5 }
-simple_set.intersection({ 1, 2 })   # { 1, 2 }
+simple_set.add(5)                               # { 1, 2, 3, 4, 5 }
+5 in empty_set                                  # = True
+simple_set.remove(5)                            # { 1, 2, 3, 4 }
+simple_set.union({ 5 })                         # { 1, 2, 3, 4, 5 }
+simple_set.intersection({ 1, 2 })               # { 1, 2 }
+type(simple_set) == set                         # = True
 
 
 # Branching
@@ -142,7 +178,7 @@ else:
     print("else")
 
 that = False
-var = "this" if not that else "that"
+var = "that" if that else "this"                # "this"
 
 
 # Looping
@@ -162,16 +198,83 @@ for i in range(10):
 read_file = open("onepager.py", "r")
 contents = read_file.read()
 print(f"Num chars: {len(contents)}")
-read_file.close()
+read_file.close()                               # Without context manager, close file
 
-with open("onepager.py", "r") as context_manager_file:
-    lines = context_manager_file.readlines()
+with open("onepager.py", "r") as cm_file:       # File opened within a context manager
+    lines = cm_file.readlines()
     print(f"Num lines: {len(lines)}")
 
 
 # Functions
-def example_function():
-    pass
+def function_with_no_args():
+    """This is a function with no args
+    and this multiline string is a doc string
+    used to add a comment for the function.
+    """
+    print("no args")
+
+function_with_no_args()                         # Prints no args : Returns None
+type(function_with_no_args)                     # = <class 'function'>, function is a class
+
+
+def f_with_args(arg1, arg2):
+    print(arg1, arg2)
+    return arg1
+
+f_with_args(1, 2)                               # Prints 1, 2 : Returns 1
+
+
+def f_typehinted(arg1: int, arg2: str) -> str:  # Will return a str
+    print(arg1, arg2)
+    return arg2
+
+f_typehinted(1, "string")                       # Prints 1, string : Returns "string"
+
+
+def f_w_kwarg(arg1, kwarg1="kwarg1"):
+    print(arg1, kwarg1)
+
+f_w_kwarg(1)                                    # Prints 1, kwarg1 : Returns None
+f_w_kwarg(1, kwarg1="other1")                   # Prints 1, other1 : Returns None
+
+
+def f_w_var_args_kwargs(*args, **kwargs):
+    print(args, kwargs)    
+
+f_w_var_args_kwargs()                           # Prints () {}
+f_w_var_args_kwargs(1, "a", kw1="b", kw2=2)     # Prints (1, "a") {'kw1': 'b', 'kw2': 2}
+
+
+# Try/Except/Else
+d = {'a': 1}
+try:
+    print("We'll try to grab 'a' from d")
+    print(d['a'])
+except KeyError:
+    print("'a' exists so no error will be thrown.")
+else:
+    print("We tried and were successful.")
+
+try:
+    print("Now we'll try 'b' from d")
+    print(d['b'])
+except KeyError as e:                           # We can put the error into a var with 'as'
+    print("'b' doesn't exist so we got a KeyError")
+    print(e)
+else:
+    print("This won't print since got error.")
+
+
+def function_with_error():
+    raise ValueError("I ony raise a ValueError")
+
+try:
+    function_with_error()
+except ValueError as ve:    
+    print(dir(ve))
+    print("ValueError: Got the ValueError")
+    print(ve)
+    type(ve) == ValueError                      # = True
 
 
 # Classes
@@ -183,9 +286,15 @@ class Example:
         """Convert an instance of Example to a string"""
         return f"{self.member_var1}"
 
-example = Example("var")
-print(str(example))
-type(example) == Example
+    def say_hi(self):
+        return f"hi, {self.member_var1}"
+
+example = Example("value")
+print(str(example))                             # Prints "value"
+example.member_var1 = "new value"
+print(str(example))                             # Prints "new value"
+print(example.say_hi())                         # Prints
+type(example) == Example                        # = True
 
 
 # Data Classes
@@ -196,4 +305,4 @@ class DataClass:
     member3: str
 
 ds = DataClass(1, 2.0, "3")
-type(ds) == DataClass
+type(ds) == DataClass                           # = True
