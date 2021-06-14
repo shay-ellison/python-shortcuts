@@ -123,7 +123,7 @@ type(empty_list) == list                        # = True
 # Tuple (tuple)
 empty_tuple = ()
 one_tuple = (9,)
-two_typle = (1,2)
+two_tuple = (1,2)
 
 one_tuple[0]                                    # = 9, index into tuple like a list
 9 in one_tuple
