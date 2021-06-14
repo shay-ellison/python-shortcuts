@@ -11,7 +11,7 @@ This is a multiline comment / docstring
 
 # Imports
 import math                                     # Import the math module
-from dataclasses import dataclass               # Import dataclass from the typing module
+from dataclasses import dataclass               # Import dataclass from the dataclasses module
 from typing import (                            # Import multiple items from the typing module
     Any, List, Set, Dict
 )
