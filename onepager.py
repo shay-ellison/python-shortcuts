@@ -106,7 +106,7 @@ list_mixed = [1, "2", 3]
 new_list = list()                               # Alternative initialization
 a_list: List[Any] = []
 int_list: List[int] = [1, 2, 3]                 # Typehint, optional
-str_list: List[str] = [1, 2, 3]
+str_list: List[str] = ["1", "string", "A"]
 
 empty_list.append(1)                            # [1]
 empty_list[0]                                   # = 1
