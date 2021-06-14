@@ -293,7 +293,7 @@ example = Example("value")
 print(str(example))                             # Prints "value"
 example.member_var1 = "new value"
 print(str(example))                             # Prints "new value"
-print(example.say_hi())                         # Prints
+print(example.say_hi())                         # Prints "hi, new value"
 type(example) == Example                        # = True
 
 
