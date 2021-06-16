@@ -65,7 +65,7 @@ a_string: str = "string"                        # Typehint, optional
 a_string: str = 'string'
 
 concat_string = "string" + "c"                  # "stringc"
-ss_char = standard_string[0]                         # "s"
+ss_char = standard_string[0]                    # "s"
 format_string1 = f"format {ss_char}"            # "format s" 
 format_string1 = f"format {pos_int}"            # "format 128" 
 format_string2 = "format %s" % ss_char          # "format s"
@@ -78,9 +78,9 @@ std_string = standard_string                    # = "string"
 type(std_string) == str                         # = True
 std_bytes = std_string.encode('utf-8')          # = b'string', encoded to bytes with utf-8 codec. Value is only returned
                                                 #  so must be assigned to a var to capture it.
-type(std_bytes) == bytes                       # = True
+type(std_bytes) == bytes                        # = True
 
-std_string = std_bytes.decode('utf-8')         # = "string", decoded to string with utf-8 codec
+std_string = std_bytes.decode('utf-8')          # = "string", decoded to string with utf-8 codec
 type(std_string) == str                         # = True
 
 
