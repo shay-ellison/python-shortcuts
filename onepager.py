@@ -100,15 +100,6 @@ standard_bool is None                           # = False, comparison by referen
 standard_bool is not None                       # = True
 type(standard_bool) == bool                     # = True
 
-x = ['a', 'b', 'c']
-y = x                                           # x and y reference the same object
-z = ['a', 'b', 'c']                             # x and z reference different objects with identical data
-x is y                                          # = True, comparison by (memory) reference
-x is z                                          # = False, comparison by (memory) reference
-x == z                                          # = True, comparison by value
-x = ['c', 'c', 'c']                             # = Reassign x to a new object
-x is y                                          # = False, y still points to original object
-
 
 # Lists (list)
 empty_list = []
@@ -310,6 +301,16 @@ example.member_var1 = "new value"
 print(str(example))                             # Prints "new value"
 print(example.say_hi())                         # Prints "hi, new value"
 type(example) == Example                        # = True
+
+e = Example("example")
+x = ['a', 'b', 'd']
+y = x                                           # x and y reference the same object
+j = ['a', 'b', 'c']                             # x and z reference different objects with identical data
+x is y                                          # = True, comparison by (memory) reference
+x is j                                          # = False, comparison by (memory) reference
+x == j                                          # = True, comparison by value
+x = ['c', 'c', 'c']                             # = Reassign x to a new object
+x is y                                          # = False, y still points to original object
 
 
 # Data Classes
