@@ -57,6 +57,8 @@ type(pos_float) == float                        # = True
 # Strings (str)
 standard_string = "string"
 standard_string = 'string'
+standard_string = """string"""                  # Triple quotes for multi-line strings but also work for single strings
+standard_string = '''string'''                  # Ditto
 standard_char = "c"                             # No char type, only string of length 1
 standard_char = 'c'
 a_string: str = "string"                        # Typehint, optional
@@ -70,16 +72,16 @@ format_string2 = "format %s" % ss_char          # "format s"
 format_string2 = "format %d" % pos_int          # "format 128"
 format_string3 = "format {}".format(ss_char)    # "format s"
 format_string3 = "format {}".format(pos_int)    # "format 128"
-standard_string.encode('utf-8')                 # b'string', encoded to bytes with utf-8 codec
-type(standard_string) == str                    # = True
 
+# Encoding (translation from characters (utf-8 or otherwise) to bytes) / Decoding (bytes to characters)
+std_string = standard_string                    # = "string"
+type(std_string) == str                         # = True
+std_bytes = std_string.encode('utf-8')          # = b'string', encoded to bytes with utf-8 codec. Value is only returned
+                                                #  so must be assigned to a var to capture it.
+type(std_bytes) == bytes                        # = True
 
-# Bytes (bytes)
-standard_bytes = b"bytestring"
-standard_bytes = b'bytestring'
-
-standard_bytes.decode('utf-8')                  # = "bytestring", decoded to string with utf-8 codec
-type(standard_bytes) == bytes                   # = True
+std_string = std_bytes.decode('utf-8')          # = "string", decoded to string with utf-8 codec
+type(std_string) == str                         # = True
 
 
 # Booleans (bool)
@@ -97,6 +99,15 @@ True and True                                   # = True
 standard_bool is None                           # = False, comparison by reference
 standard_bool is not None                       # = True
 type(standard_bool) == bool                     # = True
+
+x = ['a', 'b', 'c']
+y = x                                           # x and y reference the same object
+z = ['a', 'b', 'c']                             # x and z reference different objects with identical data
+x is y                                          # = True, comparison by (memory) reference
+x is z                                          # = False, comparison by (memory) reference
+x == z                                          # = True, comparison by value
+x = ['c', 'c', 'c']                             # = Reassign x to a new object
+x is y                                          # = False, y still points to original object
 
 
 # Lists (list)
@@ -170,12 +181,13 @@ type(simple_set) == set                         # = True
 
 
 # Branching
-if False:
-    print("if")
-elif False:
-    print("elif instead of else if")
+condition = 1
+if (condition < 1):
+    print("This won't print because the condition isn't met.")
+elif (condition > 1):
+    print("Ditto. elif short for else if")
 else:
-    print("else")
+    print("This will print because the above conditions weren't met.")
 
 that = False
 var = "that" if that else "this"                # "this"
@@ -188,9 +200,12 @@ while i < 10:
 
 nums = [1, 2, 3, 4]
 for num in nums:
-    print(num)
+    print(num)                                  # Prints 1-4, one num per line
 
-for i in range(10):
+for i in range(0, 10):                          # Note in range(start, end) - start is inclusive, end is exclusive
+    print(i)
+
+for i in range(10):                             # Identical output as above - start value is optional and 0 by default
     print(i)
 
 
@@ -300,9 +315,9 @@ type(example) == Example                        # = True
 # Data Classes
 @dataclass
 class DataClass:
-    member1: int
-    member2: float
-    member3: str
+    member1: int                                # Typehints are mandatory for data classes but not actually enforced at
+    member2: float                              #  runtime since Python is dynamically typed. Use varous tools (e.g.,
+    member3: str                                #  MyPy) to check that what is passed matches the suggested data type.
 
 ds = DataClass(1, 2.0, "3")
 type(ds) == DataClass                           # = True
