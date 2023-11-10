@@ -1,12 +1,15 @@
 """
-Python 3 OnePager for Python 3.9.x+
-By Shay Ellison (the.digital.shay@gmail.com)
+Python 3 Basics in One Page for Python 3.9.x+
+
+In this one page I try to explain all the basics you need to get
+up and running with Python 3.
 
 You can import this file into Python or run it with python.
-python onepager.py
+python basics.py
 
-This is a multiline comment / docstring
+By the way, this is as an example of a multiline comment / docstring.
 """
+
 # This is a single line comment
 
 # Imports
