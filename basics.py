@@ -1,8 +1,12 @@
 """
-Python 3 Basics in One Page for Python 3.9.x+
+*basics*
+
+Python 3 Basics in One Page for Python 3.10.x+
 
 In this one page I try to explain all the basics you need to get
-up and running with Python 3.
+up and running with Python 3. This is just a high level overview,
+look at the files that correspond with the sections for more
+information.
 
 You can import this file into Python or run it with python.
 python basics.py
@@ -76,16 +80,6 @@ format_string2 = "format %d" % pos_int          # "format 128"
 format_string3 = "format {}".format(ss_char)    # "format s"
 format_string3 = "format {}".format(pos_int)    # "format 128"
 
-# Encoding (translation from characters (utf-8 or otherwise) to bytes) / Decoding (bytes to characters)
-std_string = standard_string                    # = "string"
-type(std_string) == str                         # = True
-std_bytes = std_string.encode('utf-8')          # = b'string', encoded to bytes with utf-8 codec. Value is only returned
-                                                #  so must be assigned to a var to capture it.
-type(std_bytes) == bytes                        # = True
-
-std_string = std_bytes.decode('utf-8')          # = "string", decoded to string with utf-8 codec
-type(std_string) == str                         # = True
-
 
 # Booleans (bool)
 standard_bool = True
@@ -121,7 +115,6 @@ empty_list[0] = 2                               # [2], replaced value at index 0
 2 in empty_list                                 # = True
 empty_list.remove(2)                            # []
 empty_list + [1, 2]                             # = [1, 2]
-sorted([2, 5, 1, 4])                            # = [1, 2, 4, 5]
 type(empty_list) == list                        # = True
 
 
@@ -204,12 +197,12 @@ for i in range(10):                             # Identical output as above - st
 
 
 # Files
-read_file = open("onepager.py", "r")
+read_file = open("basics.py", "r")
 contents = read_file.read()
 print(f"Num chars: {len(contents)}")
 read_file.close()                               # Without context manager, close file
 
-with open("onepager.py", "r") as cm_file:       # File opened within a context manager
+with open("basics.py", "r") as cm_file:       # File opened within a context manager
     lines = cm_file.readlines()
     print(f"Num lines: {len(lines)}")
 
@@ -291,17 +284,12 @@ class Example:
     def __init__(self, constructor_arg1: str):
         self.member_var1 = constructor_arg1
 
-    def __str__(self) -> str:
-        """Convert an instance of Example to a string"""
-        return f"{self.member_var1}"
-
     def say_hi(self):
         return f"hi, {self.member_var1}"
 
 example = Example("value")
-print(str(example))                             # Prints "value"
+print(example.say_hi())                         # Prints "hi, value"
 example.member_var1 = "new value"
-print(str(example))                             # Prints "new value"
 print(example.say_hi())                         # Prints "hi, new value"
 type(example) == Example                        # = True
 
@@ -314,14 +302,3 @@ x is j                                          # = False, comparison by (memory
 x == j                                          # = True, comparison by value
 x = ['c', 'c', 'c']                             # = Reassign x to a new object
 x is y                                          # = False, y still points to original object
-
-
-# Data Classes
-@dataclass
-class DataClass:
-    member1: int                                # Typehints are mandatory for data classes but not actually enforced at
-    member2: float                              #  runtime since Python is dynamically typed. Use varous tools (e.g.,
-    member3: str                                #  MyPy) to check that what is passed matches the suggested data type.
-
-ds = DataClass(1, 2.0, "3")
-type(ds) == DataClass                           # = True

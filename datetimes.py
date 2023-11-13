@@ -1,3 +1,9 @@
+"""
+*datetimes*
+
+...
+"""
+
 import datetime
 
 # Best way to deal with datetimes in Python 3
