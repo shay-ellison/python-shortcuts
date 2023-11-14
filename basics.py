@@ -16,52 +16,58 @@ By the way, this is as an example of a multiline comment / docstring.
 
 # This is a single line comment
 
-# Imports
-import math                                     # Import the math module
-from dataclasses import dataclass               # Import dataclass from the dataclasses module
-from typing import (                            # Import multiple items from the typing module
-    Any, List, Set, Dict
-)
-# from . import module_or_package               # Relative import, within a same package
-# from .. import module_or_package              # Relative import, within a same container package
+
+## Imports
+
+# Import the math module
+import math
+# Import dataclass from the dataclasses module              
+from dataclasses import dataclass
+# Import multiple items from the typing module
+from typing import (Any, Set)
+# from . import module_or_package  # Relative import, within a same package
+# from .. import module_or_package # Relative import, within a same container package
 
 
-# Hello, world
-print("Hello, world!")                          # Prints Hello, world!
+## Hello, world
+print("Hello, world!")  # Prints Hello, world!
 
 
-# Integers (int)
+## Integers (int)
+
 pos_int = 128
 neg_int = -128
-an_int: int = 1                                 # Typehint, optional
+an_int: int = 1  # Typehint, optional
 
-int_add = 1 + 2                                 # = 3
-int_sub = 2 - 1                                 # = 1
-int_mul = 3 * 4                                 # = 12
-int_exp = 2**3                                  # = 8
-int_div = 4 // 2                                # = 2, there's a / too but for float (see below)
-int_div = 5 // 2                                # = 2
-int_mod = 5 % 2                                 # = 5 - 4 = 1
-type(pos_int) == int                            # = True
+int_add = 1 + 2         # = 3
+int_sub = 2 - 1         # = 1
+int_mul = 3 * 4         # = 12
+int_exp = 2**3          # = 8
+int_div = 4 // 2        # = 2, there's a / too but for float (see below)
+int_div = 5 // 2        # = 2
+int_mod = 5 % 2         # = 5 - 4 = 1
+type(pos_int) == int    # = True
 
 
-# Floats (float)
+## Floats (float)
+
 pos_float = 4.5
 neg_float = -4.5
-a_float: float = 4.5                            # Typehint, optional
+a_float: float = 4.5        # Typehint, optional
 
-float_add = 1.0 + 2                             # = 3.0
-float_sub = 2.0 - 1                             # = 1.0
-float_mul = 3.0 * 4                             # = 12.0
-float_exp = 2**-1                               # = 0.5
-float_div = 4 / 2                               # = 2.0
-float_div = 5 / 2                               # = 2.5
-float_div = 7.0 / 2.0                           # = 3.5
-float_mod = 4.5 % 2                             # = 4.5 - 4 = 0.5
-type(pos_float) == float                        # = True
+float_add = 1.0 + 2         # = 3.0
+float_sub = 2.0 - 1         # = 1.0
+float_mul = 3.0 * 4         # = 12.0
+float_exp = 2**-1           # = 0.5
+float_div = 4 / 2           # = 2.0
+float_div = 5 / 2           # = 2.5
+float_div = 7.0 / 2.0       # = 3.5
+float_mod = 4.5 % 2         # = 4.5 - 4 = 0.5
+type(pos_float) == float    # = True
 
 
-# Strings (str)
+## Strings (str)
+
 standard_string = "string"
 standard_string = 'string'
 standard_string = """string"""                  # Triple quotes for multi-line strings but also work for single strings
@@ -82,30 +88,32 @@ format_string3 = "format {}".format(pos_int)    # "format 128"
 
 
 # Booleans (bool)
+
 standard_bool = True
 standard_bool = False
 a_bool: bool = True                             # Typehint, optional
 a_bool: bool = False
 
-True or False                                   # = True
-True and True                                   # = True
-1 == 1                                          # = True
-1 != 1                                          # = False
-1 < 2                                           # = True
-1 > 2                                           # = False
-standard_bool is None                           # = False, comparison by reference
-standard_bool is not None                       # = True
-type(standard_bool) == bool                     # = True
+True or False                   # = True
+True and True                   # = True
+1 == 1                          # = True
+1 != 1                          # = False
+1 < 2                           # = True
+1 > 2                           # = False
+standard_bool is None           # = False, comparison by reference
+standard_bool is not None       # = True
+type(standard_bool) == bool     # = True
 
 
-# Lists (list)
+## Lists (list)
+
 empty_list = []
 list_ints = [1, 2, 3]
 list_mixed = [1, "2", 3]
 new_list = list()                               # Alternative initialization
-a_list: List[Any] = []
-int_list: List[int] = [1, 2, 3]                 # Typehint, optional
-str_list: List[str] = ["1", "string", "A"]
+a_list: list[Any] = []
+int_list: list[int] = [1, 2, 3]                 # Typehint, optional
+str_list: list[str] = ["1", "string", "A"]
 
 empty_list.append(1)                            # [1]
 empty_list[0]                                   # = 1
@@ -118,21 +126,24 @@ empty_list + [1, 2]                             # = [1, 2]
 type(empty_list) == list                        # = True
 
 
-# Tuple (tuple)
+## Tuple (tuple)
+
 empty_tuple = ()
 one_tuple = (9,)
-two_tuple = (1,2)
+two_tuple = (1, 2)
+a_tuple: tuple[int, int] = (1, 2)
 
-one_tuple[0]                                    # = 9, index into tuple like a list
+one_tuple[0]                        # = 9, index into tuple like a list
 9 in one_tuple
 try:
-    one_tuple[0] = 1                            # This is not allowed
+    one_tuple[0] = 1                # This is not allowed
 except TypeError:
     print("Tuples are immutable")
-type(one_tuple) == tuple                        # = True
+type(one_tuple) == tuple            # = True
 
 
-# Dicts (dict)
+## Dicts (dict)
+
 empty_dict = {}
 simple_dict = {
     "key1": 1,
@@ -142,32 +153,34 @@ mixed_dict = {
     "key1": 1,
     1: "key1",
 }
-new_dict = dict()                               # Alternative initialization
-a_dict: Dict[Any, Any] = {}                     # Typehint, optional
-str_int_dict: Dict[str, int] = {}
+new_dict = dict()                   # Alternative initialization
+a_dict: dict[Any, Any] = {}         # Typehint, optional
+str_int_dict: dict[str, int] = {}
 
 simple_dict["key3"]= 3
-"key3" in simple_dict                           # = True
-simple_dict["key3"]                             # = 3
-type(simple_dict) == dict                       # = True
+"key3" in simple_dict               # = True
+simple_dict["key3"]                 # = 3
+type(simple_dict) == dict           # = True
 
 
-# Sets (set)
-empty_set = set()                               # NOTE: Just {} is a dict
+## Sets (set)
+
+empty_set = set()                   # NOTE: Just {} is a dict
 simple_set = { 1, 2, 3, 4 }
 mixed_set = { 1, '2', 3, '4' }
 a_set: Set[Any] = set()
 int_set: Set[int] = { 1, 2, 3, 4 }
 
-simple_set.add(5)                               # { 1, 2, 3, 4, 5 }
-5 in empty_set                                  # = True
-simple_set.remove(5)                            # { 1, 2, 3, 4 }
-simple_set.union({ 5 })                         # { 1, 2, 3, 4, 5 }
-simple_set.intersection({ 1, 2 })               # { 1, 2 }
-type(simple_set) == set                         # = True
+simple_set.add(5)                   # { 1, 2, 3, 4, 5 }
+5 in empty_set                      # = True
+simple_set.remove(5)                # { 1, 2, 3, 4 }
+simple_set.union({ 5 })             # { 1, 2, 3, 4, 5 }
+simple_set.intersection({ 1, 2 })   # { 1, 2 }
+type(simple_set) == set             # = True
 
 
-# Branching
+## Branching
+
 condition = 1
 if (condition < 1):
     print("This won't print because the condition isn't met.")
@@ -177,37 +190,27 @@ else:
     print("This will print because the above conditions weren't met.")
 
 that = False
-var = "that" if that else "this"                # "this"
+var = "that" if that else "this"  # "this"
 
 
-# Looping
+## Looping
 i = 0
 while i < 10:
     i += 1
 
 nums = [1, 2, 3, 4]
 for num in nums:
-    print(num)                                  # Prints 1-4, one num per line
+    print(num)              # Prints 1-4, one num per line
 
-for i in range(0, 10):                          # Note in range(start, end) - start is inclusive, end is exclusive
+for i in range(0, 10):      # Note in range(start, end) - start is inclusive, end is exclusive
     print(i)
 
-for i in range(10):                             # Identical output as above - start value is optional and 0 by default
+for i in range(10):         # Identical output as above - start value is optional and 0 by default
     print(i)
 
 
-# Files
-read_file = open("basics.py", "r")
-contents = read_file.read()
-print(f"Num chars: {len(contents)}")
-read_file.close()                               # Without context manager, close file
+## Functions
 
-with open("basics.py", "r") as cm_file:       # File opened within a context manager
-    lines = cm_file.readlines()
-    print(f"Num lines: {len(lines)}")
-
-
-# Functions
 def function_with_no_args():
     """This is a function with no args
     and this multiline string is a doc string
@@ -247,7 +250,19 @@ f_w_var_args_kwargs()                           # Prints () {}
 f_w_var_args_kwargs(1, "a", kw1="b", kw2=2)     # Prints (1, "a") {'kw1': 'b', 'kw2': 2}
 
 
-# Try/Except/Else
+## Files
+read_file = open("basics.py", "r")
+contents = read_file.read()
+print(f"Num chars: {len(contents)}")
+read_file.close()                           # Without context manager, close file
+
+with open("basics.py", "r") as cm_file:     # File opened within a context manager
+    lines = cm_file.readlines()
+    print(f"Num lines: {len(lines)}")
+
+
+## Try/Except/Else
+
 d = {'a': 1}
 try:
     print("We'll try to grab 'a' from d")
@@ -260,7 +275,8 @@ else:
 try:
     print("Now we'll try 'b' from d")
     print(d['b'])
-except KeyError as e:                           # We can put the error into a var with 'as'
+except KeyError as e:
+    # We can put the error into a var with 'as'
     print("'b' doesn't exist so we got a KeyError")
     print(e)
 else:
@@ -276,10 +292,11 @@ except ValueError as ve:
     print(dir(ve))
     print("ValueError: Got the ValueError")
     print(ve)
-    type(ve) == ValueError                      # = True
+    type(ve) == ValueError  # = True
 
 
-# Classes
+## Classes
+
 class Example:
     def __init__(self, constructor_arg1: str):
         self.member_var1 = constructor_arg1
@@ -288,17 +305,17 @@ class Example:
         return f"hi, {self.member_var1}"
 
 example = Example("value")
-print(example.say_hi())                         # Prints "hi, value"
+print(example.say_hi())             # Prints "hi, value"
 example.member_var1 = "new value"
-print(example.say_hi())                         # Prints "hi, new value"
-type(example) == Example                        # = True
+print(example.say_hi())             # Prints "hi, new value"
+type(example) == Example            # = True
 
 e = Example("example")
 x = ['a', 'b', 'd']
-y = x                                           # x and y reference the same object
-j = ['a', 'b', 'c']                             # x and z reference different objects with identical data
-x is y                                          # = True, comparison by (memory) reference
-x is j                                          # = False, comparison by (memory) reference
-x == j                                          # = True, comparison by value
-x = ['c', 'c', 'c']                             # = Reassign x to a new object
-x is y                                          # = False, y still points to original object
+y = x                               # x and y reference the same object
+j = ['a', 'b', 'c']                 # x and z reference different objects with identical data
+x is y                              # = True, comparison by (memory) reference
+x is j                              # = False, comparison by (memory) reference
+x == j                              # = True, comparison by value
+x = ['c', 'c', 'c']                 # = Reassign x to a new object
+x is y                              # = False, y still points to original object
