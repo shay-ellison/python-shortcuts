@@ -7,6 +7,13 @@ You can import this file into Python or run it with python.
 python lists.py
 """
 
+def print(value):
+	import builtins
+	import inspect
+	callerframerecord = inspect.stack()[1]
+	frame = callerframerecord[0]
+	builtins.print(f":{inspect.getlineno(frame)}\t# {value}")
+
 
 ## List Basics
 
@@ -51,6 +58,19 @@ list_2d = [
 	[7, 8, 9],
 ]
 print(list_2d)  # [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+# We can choose a variety of ways to traverse over it
+for row in list_2d:
+	for item in row:
+		print(item)
+	print("-")
+
+for r in range(len(list_2d)):
+	row = list_2d[r]
+	for c in range(len(row)):
+		item = row[c]
+		print(item)
+	print("-")
 
 
 ## Building lists
@@ -132,4 +152,10 @@ print(sorted_strings)  # ['aastr', 'abstr', 'bbstr']
 sorted_tuples = sorted([(2, 1), (1, 1), (1, 2)])
 print(sorted_tuples)  # [(1, 1), (1, 2), (2, 1)]
 
-# ... key= ...
+# To sort data types with more than one value
+# or to evaluate a data type by a different criterion
+# we can use the `key` parameter rather than writing a comparator
+
+# For example, we can sort the tuples only by their second element
+sorted_2nd_tuples = sorted([(0, 3), (1, 2), (2, 1)], key=lambda pair: pair[1])
+print(sorted_2nd_tuples)  # [(2, 1), (1, 2), (0, 3)]
